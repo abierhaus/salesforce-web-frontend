@@ -1,0 +1,27 @@
+﻿@page
+@model salesforce_web_frontend.Pages.Salesforce.LeadFormModel
+<form method="post">
+    <table>
+        <tr>
+            <td>Company: </td>
+            <td><input type="text" id="Company" name="Company"/></td>
+        </tr>
+        <tr>
+            <td>First Name: </td>
+            <td><input type="text" id="Firstname" name="Firstname"/></td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td><input type="text" id="Lastname" name="Lastname"/></td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td><textarea type="text"  id="Description" name="Description"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" asp-page-handler="Submit"/></td>
+        </tr>
+    </table>
+    <hr/>
+</form>
