@@ -28,7 +28,6 @@ namespace salesforce_web_frontend.Pages.Salesforce
         public void OnGet()
         {
         }
-
         public async Task OnPostSubmit(Lead lead)
         {
             SalesforceSObjectResponse =  await SalesforceService.CreateLeadAsync(lead);
