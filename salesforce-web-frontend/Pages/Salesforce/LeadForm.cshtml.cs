@@ -23,7 +23,7 @@ namespace salesforce_web_frontend.Pages.Salesforce
         }
 
 
-        public string Message { get; set; }
+        public SalesforceSObjectResponse SalesforceSObjectResponse { get; set; }
 
         public void OnGet()
         {
@@ -31,7 +31,7 @@ namespace salesforce_web_frontend.Pages.Salesforce
 
         public async Task OnPostSubmit(Lead lead)
         {
-            await SalesforceService.CreateLeadAsync(lead);
+            SalesforceSObjectResponse =  await SalesforceService.CreateLeadAsync(lead);
 
         }
     }

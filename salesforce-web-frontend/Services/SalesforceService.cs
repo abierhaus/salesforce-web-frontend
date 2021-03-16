@@ -12,7 +12,7 @@ namespace salesforce_web_frontend.Services
 {
     public interface ISalesforceService
     {
-        Task<string> CreateLeadAsync(Lead lead);
+        Task<SalesforceSObjectResponse> CreateLeadAsync(Lead lead);
     }
 
 
@@ -42,7 +42,7 @@ namespace salesforce_web_frontend.Services
         private string ApiEndpoint { get; }
 
 
-        public async Task<string> CreateLeadAsync(Lead lead)
+        public async Task<SalesforceSObjectResponse> CreateLeadAsync(Lead lead)
         {
             //Auth
             var salesforceAuthentificationResponse = await Auth();
@@ -62,7 +62,13 @@ namespace salesforce_web_frontend.Services
             var response = await client.SendAsync(request);
 
             //Get results back. SF will response with a HTTP Status Code and a message
-            return await response.Content.ReadAsStringAsync();
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            //Deserialize response
+            var salesforceSObjectResponse = JsonSerializer.Deserialize<SalesforceSObjectResponse>(responseContent);
+
+
+            return salesforceSObjectResponse;
         }
 
 
